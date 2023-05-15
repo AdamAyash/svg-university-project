@@ -1,0 +1,196 @@
+[Sun May 07 21:10:04 EEST 2023] main.exceptions.CommandNotImplementedException:  is not recognized as internal or external command.
+
+[Sun May 07 21:11:36 EEST 2023] main.exceptions.CommandNotImplementedException:  is not recognized as internal or external command.
+
+[Sun May 07 21:14:59 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sun May 07 21:15:04 EEST 2023] main.exceptions.CommandNotImplementedException: "adadadad" is not recognized as internal or external command.
+
+[Sun May 07 21:15:17 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sun May 07 21:15:19 EEST 2023] main.exceptions.CommandNotImplementedException: "adadad" is not recognized as internal or external command.
+
+[Sun May 07 21:15:21 EEST 2023] main.exceptions.CommandNotImplementedException: "adadad" is not recognized as internal or external command.
+
+[Mon May 08 01:29:04 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 01:29:04 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 01:29:06 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 01:29:06 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 01:29:07 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 01:29:07 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 01:29:08 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 01:29:09 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 01:29:10 EEST 2023] main.exceptions.CommandNotImplementedException: "adadad" is not recognized as internal or external command.
+
+[Mon May 08 01:29:11 EEST 2023] main.exceptions.CommandNotImplementedException: "dadadad" is not recognized as internal or external command.
+
+[Mon May 08 01:29:12 EEST 2023] main.exceptions.CommandNotImplementedException: "adadada" is not recognized as internal or external command.
+
+[Mon May 08 01:29:13 EEST 2023] main.exceptions.CommandNotImplementedException: "adadada" is not recognized as internal or external command.
+
+[Mon May 08 01:29:47 EEST 2023] main.exceptions.CommandNotImplementedException: "dada" is not recognized as internal or external command.
+
+[Mon May 08 01:29:49 EEST 2023] main.exceptions.CommandNotImplementedException: "dadada" is not recognized as internal or external command.
+
+[Mon May 08 01:29:54 EEST 2023] main.exceptions.CommandNotImplementedException: "adadaad" is not recognized as internal or external command.
+
+[Mon May 08 01:40:39 EEST 2023] main.exceptions.CommandNotImplementedException: "dad" is not recognized as internal or external command.
+
+[Mon May 08 01:40:41 EEST 2023] main.exceptions.CommandNotImplementedException: "dadad" is not recognized as internal or external command.
+
+[Mon May 08 01:40:42 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 01:40:43 EEST 2023] main.exceptions.CommandNotImplementedException: "adadad" is not recognized as internal or external command.
+
+[Mon May 08 11:55:20 EEST 2023] main.exceptions.CommandNotImplementedException: "open" is not recognized as internal or external command.
+
+[Mon May 08 12:04:41 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 12:05:41 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 12:05:41 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 13:21:48 EEST 2023] main.exceptions.CommandNotImplementedException: "dadad" is not recognized as internal or external command.
+
+[Mon May 08 17:17:51 EEST 2023] main.exceptions.CommandNotImplementedException: "dadad" is not recognized as internal or external command.
+
+[Mon May 08 17:17:53 EEST 2023] main.exceptions.CommandNotImplementedException: "dadadad" is not recognized as internal or external command.
+
+[Mon May 08 17:18:08 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 17:18:09 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 18:58:22 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 19:53:46 EEST 2023] main.exceptions.CommandNotImplementedException: "dDdsdadad" is not recognized as internal or external command.
+
+[Mon May 08 19:53:48 EEST 2023] main.exceptions.CommandNotImplementedException: "adasdsdadada" is not recognized as internal or external command.
+
+[Mon May 08 19:53:49 EEST 2023] main.exceptions.CommandNotImplementedException: "dadadad" is not recognized as internal or external command.
+
+[Mon May 08 21:36:13 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+
+[Mon May 08 21:36:26 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 21:36:34 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+
+[Mon May 08 21:39:11 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+
+[Mon May 08 22:03:46 EEST 2023] main.exceptions.CommandNotImplementedException: "dada" is not recognized as internal or external command.
+
+[Mon May 08 22:04:09 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+
+[Mon May 08 22:05:00 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 22:05:00 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 08 22:05:19 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Tue May 09 08:20:48 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 10 22:35:03 EEST 2023] java.lang.NumberFormatException: For input string: "d"
+
+[Fri May 12 22:44:22 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for length 2
+
+[Sat May 13 09:44:46 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 0
+
+[Sat May 13 09:50:18 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 0
+
+[Sat May 13 09:50:32 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 0
+
+[Sat May 13 09:52:06 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+
+[Sat May 13 09:53:39 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sat May 13 09:53:40 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sat May 13 09:53:46 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 0
+
+[Sat May 13 09:54:18 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+
+[Sat May 13 09:54:32 EEST 2023] main.exceptions.CommandNotImplementedException: "Connected" is not recognized as internal or external command.
+
+[Sat May 13 09:55:47 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+
+[Sat May 13 10:19:16 EEST 2023] main.exceptions.CommandNotImplementedException: "fileExtension" is not recognized as internal or external command.
+
+[Sat May 13 10:21:27 EEST 2023] main.exceptions.CommandNotImplementedException: "close" is not recognized as internal or external command.
+
+[Sat May 13 10:21:34 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sat May 13 10:22:33 EEST 2023] main.exceptions.CommandNotImplementedException: "ope" is not recognized as internal or external command.
+
+[Sat May 13 10:47:24 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sat May 13 10:47:37 EEST 2023] main.exceptions.CommandNotImplementedException: "ave" is not recognized as internal or external command.
+
+[Sat May 13 10:49:08 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sat May 13 12:42:15 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sat May 13 15:54:22 EEST 2023] main.exceptions.CommandNotImplementedException: "close" is not recognized as internal or external command.
+
+[Sat May 13 15:54:26 EEST 2023] main.exceptions.CommandNotImplementedException: "close" is not recognized as internal or external command.
+
+[Sat May 13 15:55:25 EEST 2023] main.exceptions.CommandNotImplementedException: "dada" is not recognized as internal or external command.
+
+[Sat May 13 15:55:27 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+
+[Sat May 13 15:59:42 EEST 2023] main.exceptions.CommandNotImplementedException: "clsoe" is not recognized as internal or external command.
+
+[Sat May 13 20:32:15 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sat May 13 20:34:00 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sun May 14 09:59:47 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sun May 14 10:51:02 EEST 2023] main.exceptions.CommandNotImplementedException: "pen" is not recognized as internal or external command.
+
+[Sun May 14 10:52:40 EEST 2023] java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 2
+
+[Sun May 14 10:52:48 EEST 2023] java.lang.IndexOutOfBoundsException: Index -2 out of bounds for length 2
+
+[Sun May 14 10:52:51 EEST 2023] java.lang.IndexOutOfBoundsException: Index 19 out of bounds for length 2
+
+[Sun May 14 10:52:53 EEST 2023] java.lang.NumberFormatException: For input string: "dad"
+
+[Sun May 14 10:52:57 EEST 2023] java.lang.NumberFormatException: For input string: "adada"
+
+[Sun May 14 14:38:28 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sun May 14 20:04:07 EEST 2023] main.exceptions.CommandNotImplementedException: "CommandResult." is not recognized as internal or external command.
+
+[Sun May 14 20:05:42 EEST 2023] main.exceptions.CommandNotImplementedException: "CommandResult." is not recognized as internal or external command.
+
+[Sun May 14 20:17:26 EEST 2023] java.lang.NumberFormatException: For input string: "vertical=10"
+
+[Sun May 14 20:17:30 EEST 2023] main.exceptions.CommandNotImplementedException: "translatevertical=10" is not recognized as internal or external command.
+
+[Sun May 14 21:09:11 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sun May 14 21:09:11 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sun May 14 21:09:12 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sun May 14 21:10:19 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sun May 14 21:17:12 EEST 2023] main.exceptions.CommandNotImplementedException: "prin" is not recognized as internal or external command.
+
+[Sun May 14 21:17:58 EEST 2023] java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3
+
+[Sun May 14 21:22:12 EEST 2023] java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3
+
+[Sun May 14 21:23:29 EEST 2023] main.exceptions.CommandNotImplementedException: "peint" is not recognized as internal or external command.
+
+[Sun May 14 21:26:05 EEST 2023] java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3
+
+[Sun May 14 21:26:09 EEST 2023] java.lang.IndexOutOfBoundsException: Index 11 out of bounds for length 3
+
