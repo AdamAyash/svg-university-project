@@ -8,6 +8,7 @@ import main.commandlineinterface.commands.base.Command;
 import main.commandlineinterface.inputmanager.InputManager;
 import main.errorlogger.ErrorLogger;
 import main.exceptions.CommandNotImplementedException;
+import main.svgparser.CommandProcessor;
 
 //класът описва работата и функционалностите на интерфейса
 public final class CommandLineInterface {
@@ -34,12 +35,12 @@ public final class CommandLineInterface {
     }
 
     //стартираща фунция на класът
-    public CommandResult run() {
+    public CommandResult run(CommandProcessor commandProcessor) {
         inputManager.readUserInput();
         CommandResult cResult;
         try {
            Command currentCommand =  commandFactory.createCommand(inputManager.getCommand());
-           cResult = currentCommand.executeCommand();
+           cResult = currentCommand.executeCommand(commandProcessor);
 
            if(cResult == CommandResult.COMMAND_SUCCESSFUL){
                this.currentCommand = currentCommand;

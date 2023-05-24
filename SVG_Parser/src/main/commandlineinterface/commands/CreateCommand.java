@@ -5,6 +5,7 @@ import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commands.shapes.BasicShape;
 import main.commandlineinterface.commandvalidators.BaseCommandValidator;
 import main.commandlineinterface.commandvalidators.CreateCommandValidator;
+import main.svgparser.CommandProcessor;
 
 public class CreateCommand extends BaseCommand {
 
@@ -15,12 +16,13 @@ public class CreateCommand extends BaseCommand {
     //референция към обекта на фигурата
     private BasicShape shape;
 
-    //цветът
-    private String color;
+    //оказва дали фигурата е цветна или не
+    private boolean isColorless;
 
     //-----Constructor-----
-    public CreateCommand(String[] userInputCommand, int commandParameterCount) {
+    public CreateCommand(String[] userInputCommand, int commandParameterCount, boolean isColorless) {
         super(userInputCommand, commandParameterCount);
+        this.isColorless = isColorless;
     }
 
     //-----Methods-----
@@ -32,14 +34,20 @@ public class CreateCommand extends BaseCommand {
         this.shape = shape;
     }
 
+    public boolean isColorless() {
+        return isColorless;
+    }
+
     //-----Overrides----
     @Override
-    public CommandResult executeCommand() {
-        CommandResult cResult = CommandResult.COMMAND_SUCCESSFUL;
+    public CommandResult executeCommand(CommandProcessor commandProcessor) {
         BaseCommandValidator createCommandValidator = new CreateCommandValidator();
 
-        cResult = createCommandValidator.validate(this);
+        CommandResult cResult = createCommandValidator.validate(this);
 
-        return cResult;
+        if(cResult != CommandResult.COMMAND_SUCCESSFUL)
+            return cResult;
+
+        return commandProcessor.createShape(this);
     }
 }

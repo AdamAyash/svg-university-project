@@ -3,9 +3,7 @@ import main.commandlineinterface.PrintWriter.PrintWriter;
 import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.*;
 import main.commandlineinterface.commands.base.Command;
-import main.commandlineinterface.commands.shapes.CircleShape;
-import main.commandlineinterface.commands.shapes.LineShape;
-import main.commandlineinterface.commands.shapes.RectangleShape;
+import main.commandlineinterface.commands.shapes.*;
 import main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes;
 import main.commandlineinterface.commands.EraseCommand;
 import main.errorlogger.ErrorLogger;
@@ -31,10 +29,8 @@ public class CommandProcessor {
     private final String ROOT_ELEMENT = "svg";
 
     //-----Members-----
-
     //оказва дали има отворен файл в момента
     private boolean isFileOpened;
-
     private List<Element> shapesList;
 
     //представкява буфер където ще се зареждат данните от svg/xml файловете
@@ -51,41 +47,8 @@ public class CommandProcessor {
 
     //-----Methods-----
 
-    //определя коя команда следва да се извика,ако е поддържана
-    public CommandResult executeCommand(final Command command){
-
-       CommandResult cResult = CommandResult.COMMAND_FAILED;
-        if(command instanceof OpenCommand)
-             cResult = openFile(command);
-
-        if(isFileOpened) {
-            if (command instanceof SaveCommand)
-                cResult = saveFile();
-
-            if(command instanceof  CreateCommand)
-                cResult = createShape(command);
-
-            if(command instanceof CloseCommand)
-                cResult = closeCurrentFile();
-
-            if(command instanceof PrintCommand)
-                cResult = print();
-
-            if(command instanceof EraseCommand)
-                cResult = eraseShape(command);
-
-            if(command instanceof TranslateCommand)
-                cResult = translate(command);
-
-        }else{
-            cResult = CommandResult.FILE_NOT_OPENED;
-        }
-
-        return cResult;
-    }
-
     //създава или отваря вече съществуващ файл
-    private CommandResult openFile(final Command currentCommand){
+    public CommandResult openFile(final Command currentCommand){
         CommandResult cResult = CommandResult.FILE_SUCCESSFULLY_OPENED;
        if(!isFileOpened) {
            OpenCommand openCommand = (OpenCommand) currentCommand;
@@ -93,7 +56,7 @@ public class CommandProcessor {
            currentFile = new File(((OpenCommand) currentCommand).getFilePath());
 
            DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-           DocumentBuilder documentBuilder = null;
+           DocumentBuilder documentBuilder;
            try {
                documentBuilder = documentBuilderFactory.newDocumentBuilder();
                if (currentFile.exists()) {
@@ -118,6 +81,61 @@ public class CommandProcessor {
         return cResult;
     }
 
+    public CommandResult checkIfShapeIsWithinAnotherShape(final Command command){
+        CommandResult cResult = CommandResult.COMMAND_SUCCESSFUL;
+        if(!isFileOpened)
+            return cResult = CommandResult.FILE_NOT_OPENED;
+
+        WithinCommand withinCommand = (WithinCommand)command;
+
+        BasicShape shape = withinCommand.getShape();
+
+        for(int i = 0; i < shapesList.size(); i++) {
+                Element currentShape = (Element) shapesList.get(i);
+
+                if(currentShape.getTagName().equals(SupportedShapes.RECTANGLE.getSvgTag())) {
+                        int x = Integer.parseInt(currentShape.getAttribute("x"));
+                        int y = Integer.parseInt(currentShape.getAttribute("y"));
+                        int width = Integer.parseInt(currentShape.getAttribute("width"));
+                        int height = Integer.parseInt(currentShape.getAttribute("height"));
+
+                        if (ShapeUtilities.isRectangleWithinRectangle(x, y, width, height, ((RectangleShape)shape).getXCoordinate(), ((RectangleShape)shape).getYCoordinate(), ((RectangleShape)shape).getWidth(), ((RectangleShape)shape).getHeight()) && shape instanceof RectangleShape) {
+                            print(i);
+                        }
+
+                        if (ShapeUtilities.isRectangleWithinCircle(((CircleShape)shape).getCenterXCoordinate(), ((CircleShape)shape).getCenterYCoordinate(), ((CircleShape)shape).getRadius(), x, y, width, height) && shape instanceof CircleShape) {
+                            print(i);
+                        }
+                }
+                   if(currentShape.getTagName().equals(SupportedShapes.CIRCLE.getSvgTag())) {
+                       int cx = Integer.parseInt(currentShape.getAttribute("cx"));
+                       int cy = Integer.parseInt(currentShape.getAttribute("cy"));
+                       int radius = Integer.parseInt(currentShape.getAttribute("r"));
+
+                       int closestX = Math.max((((RectangleShape) shape).getXCoordinate()), Math.min(cx, ((RectangleShape) shape).getXCoordinate() + ((RectangleShape) shape).getWidth()));
+                       int closestY = Math.max(((RectangleShape) shape).getYCoordinate(), Math.min(cy, ((RectangleShape) shape).getYCoordinate() + ((RectangleShape) shape).getHeight()));
+
+
+                       int distance = (int)Math.sqrt(Math.pow(cx - closestX, 2) + Math.pow(cy - closestY, 2));
+
+                       if (distance <= radius)
+                           print(i);
+                   }
+
+                   if(currentShape.getTagName().equals(SupportedShapes.LINE.getSvgTag())){
+
+                       int firstXCoordinate = Integer.parseInt(currentShape.getAttribute("x1"));
+                       int secondXCoordinate = Integer.parseInt(currentShape.getAttribute("x2"));
+                       int  firstYCoordinate = Integer.parseInt(currentShape.getAttribute("y1"));
+                       int secondYCoordinate = Integer.parseInt(currentShape.getAttribute("y2"));
+                       if (ShapeUtilities.isLineWithinRectangle(((RectangleShape)shape).getXCoordinate(), ((RectangleShape)shape).getYCoordinate(), ((RectangleShape)shape).getWidth(), ((RectangleShape)shape).getHeight(), firstXCoordinate, secondXCoordinate, firstYCoordinate, secondYCoordinate)) {
+                           print(i);
+                       }
+            }
+                }
+        return cResult;
+    }
+
     private void checkShapeTypeAndTranslate(Element currentShape, TranslateCommand translateCommand){
         boolean result = true;
         switch (currentShape.getTagName()){
@@ -138,8 +156,11 @@ public class CommandProcessor {
         }
     }
 
-    private CommandResult translate(final Command command){
+    public CommandResult translate(final Command command){
         CommandResult cResult = CommandResult.COMMAND_SUCCESSFUL;
+        if(!isFileOpened)
+            return cResult = CommandResult.FILE_NOT_OPENED;
+
         try{
             TranslateCommand translateCommand = (TranslateCommand)command;
 
@@ -154,10 +175,10 @@ public class CommandProcessor {
                      currentShape = this.shapesList.get(i);
                     checkShapeTypeAndTranslate(currentShape, translateCommand);
                 }
+            }else {
+                currentShape = this.shapesList.get(translateCommand.getIndexOfShapeTobeErased() - 1);
+                checkShapeTypeAndTranslate(currentShape, translateCommand);
             }
-            currentShape = this.shapesList.get(translateCommand.getIndexOfShapeTobeErased() - 1);
-            checkShapeTypeAndTranslate(currentShape, translateCommand);
-
         }
         catch (IndexOutOfBoundsException | NullPointerException e){
             cResult = CommandResult.COMMAND_FAILED;
@@ -168,8 +189,10 @@ public class CommandProcessor {
     }
 
     //методът прави проверка кава ще бъде фигурата която ще се създава и изиква съответният метод
-    private CommandResult createShape(final Command command){
+    public CommandResult createShape(final Command command){
        CommandResult cResult = CommandResult.COMMAND_FAILED;
+        if(!isFileOpened)
+            return cResult = CommandResult.FILE_NOT_OPENED;
         CreateCommand createCommand = (CreateCommand)command;
 
         if(createCommand.getShape() instanceof RectangleShape)
@@ -251,7 +274,7 @@ public class CommandProcessor {
     }
 
     //връща обкет от тип елемент, който реално е svg тагът на него добавяме самите фигури, като child nodes
-    private Element getRootElement() {
+    private Element getRootElement() throws NullPointerException{
         Element rootElement = null;
         NodeList rootNodeList = currentDocument.getElementsByTagName(ROOT_ELEMENT);
         Node rootNode = rootNodeList.item(0);
@@ -265,7 +288,7 @@ public class CommandProcessor {
         boolean result = false;
         for (SupportedShapes supportedShape :
                 SupportedShapes.values()) {
-            if (supportedShape.getSupportedShape().equals(shapeTagName)) {
+            if (supportedShape.getSvgTag().equals(shapeTagName)) {
                 result = true;
             }
         }
@@ -282,7 +305,7 @@ public class CommandProcessor {
                if (currentShape.getNodeType() == Node.ELEMENT_NODE) {
                    Element shapeElement = (Element) currentShape;
                    if (isShapeSupported(shapeElement.getTagName())) {
-                       shapesList.add(shapeElement);
+                       this.shapesList.add(shapeElement);
                    }
                }
            }
@@ -295,9 +318,11 @@ public class CommandProcessor {
        return result;
     }
 
-    private CommandResult eraseShape(final Command currentCommand){
+    public CommandResult eraseShape(final Command currentCommand){
 
         CommandResult cResult = CommandResult.COMMAND_SUCCESSFUL;
+        if(!isFileOpened)
+            return cResult = CommandResult.FILE_NOT_OPENED;
         try {
             EraseCommand eraseCommand = (EraseCommand) currentCommand;
             Element shapeToBeErased = this.shapesList.remove(eraseCommand.getEraseShapeIndex());
@@ -312,17 +337,24 @@ public class CommandProcessor {
         return cResult;
     }
 
-    private CommandResult print(){
+    //принтира една фигура по подаден индекс
+    private void print(int index) throws ArrayIndexOutOfBoundsException , NullPointerException{
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append((index+1) +  ". " + this.shapesList.get(index).getTagName() + " ");
+        NamedNodeMap shapeAttributes = this.shapesList.get(index).getAttributes();
+        for (int j = 0; j < shapeAttributes.getLength(); j++) {
+            stringBuilder.append(shapeAttributes.item(j).getNodeValue().toString() + " ");
+        }
+        PrintWriter.print(stringBuilder.toString());
+    }
+
+    public CommandResult printAllShapes(){
         CommandResult cResult = CommandResult.COMMAND_SUCCESSFUL;
+        if(!isFileOpened)
+            return cResult = CommandResult.FILE_NOT_OPENED;
        try {
            for (int i = 0; i < this.shapesList.size(); i++) {
-               StringBuilder stringBuilder = new StringBuilder();
-               stringBuilder.append((i+1) +  ". " + this.shapesList.get(i).getTagName() + " ");
-               NamedNodeMap shapeAttributes = this.shapesList.get(i).getAttributes();
-               for (int j = 0; j < shapeAttributes.getLength(); j++) {
-                   stringBuilder.append(shapeAttributes.item(j).getNodeValue().toString() + " ");
-               }
-               PrintWriter.print(stringBuilder.toString());
+               print(i);
            }
        }
        catch (ArrayIndexOutOfBoundsException  | NullPointerException e){
@@ -333,8 +365,11 @@ public class CommandProcessor {
     }
 
     //записва промените направени в будера във файла
-    private  CommandResult saveFile() {
+    public  CommandResult saveFile() {
         CommandResult cResult = CommandResult.COMMAND_SUCCESSFUL;
+        if(!isFileOpened)
+            return cResult = CommandResult.FILE_NOT_OPENED;
+
         try {
             DOMSource source = new DOMSource(currentDocument);
 
@@ -355,7 +390,9 @@ public class CommandProcessor {
     }
 
     //затваря текущия файл, без да запазва промените по него
-    private CommandResult closeCurrentFile(){
+    public CommandResult closeCurrentFile(){
+        if(!isFileOpened)
+            return CommandResult.FILE_NOT_OPENED;
         currentDocument = null;
         isFileOpened = false;
         shapesList.removeAll(shapesList);

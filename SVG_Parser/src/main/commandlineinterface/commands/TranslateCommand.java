@@ -3,6 +3,7 @@ package main.commandlineinterface.commands;
 import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commandvalidators.TranslateCommandValidator;
+import main.svgparser.CommandProcessor;
 
 public class TranslateCommand extends BaseCommand {
 
@@ -57,10 +58,15 @@ public class TranslateCommand extends BaseCommand {
 
     //-----Overrides----
     @Override
-    public CommandResult executeCommand() {
+    public CommandResult executeCommand(CommandProcessor commandProcessor) {
         TranslateCommandValidator translateCommandValidator = new TranslateCommandValidator();
 
-        return translateCommandValidator.validate(this);
+        CommandResult cResult = translateCommandValidator.validate(this);
+
+        if(cResult != CommandResult.COMMAND_SUCCESSFUL)
+            return cResult;
+
+        return commandProcessor.translate(this);
     }
 
 

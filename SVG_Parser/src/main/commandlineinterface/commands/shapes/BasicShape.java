@@ -1,5 +1,6 @@
 package main.commandlineinterface.commands.shapes;
 
+//базов клас за фигура описващ цвета на фигурата
 public class BasicShape {
 
     //-----Constants-----
@@ -16,8 +17,9 @@ public class BasicShape {
         return color;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColor(String color, boolean isColorless) {
+        if(!isColorless)
+            this.color = color;
     }
 
     //-----Overrides----

@@ -29,7 +29,7 @@ public class CommandFactory {
             return new SaveCommand(command, SupportedCommands.SAVE.getCommandParameterCount());
 
         if(currentCommandKeyword.equals(SupportedCommands.CREATE.getCommand()))
-            return new CreateCommand(command, SupportedCommands.CREATE.getCommandParameterCount());
+            return new CreateCommand(command, SupportedCommands.CREATE.getCommandParameterCount(), false);
 
         if(currentCommandKeyword.equals(SupportedCommands.CLOSE.getCommand()))
             return new CloseCommand(command, SupportedCommands.CLOSE.getCommandParameterCount());
@@ -43,6 +43,8 @@ public class CommandFactory {
         if(currentCommandKeyword.equals(SupportedCommands.TRANSLATE.getCommand()))
                 return new TranslateCommand(command, SupportedCommands.TRANSLATE.getCommandParameterCount());
 
+        if(currentCommandKeyword.equals(SupportedCommands.WITHIN.getCommand()))
+            return new WithinCommand(command, SupportedCommands.WITHIN.getCommandParameterCount());
 
 
         throw new CommandNotImplementedException("\"" + currentCommandKeyword + "\"" + COMMAND_NOT_SUPPORTED_MESSAGE);

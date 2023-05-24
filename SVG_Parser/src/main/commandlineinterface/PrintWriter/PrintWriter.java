@@ -22,14 +22,16 @@ public class PrintWriter {
     }
 
     //принтира съобщение в зависимост от подадения параметър CommandResult и командата
-    public static void print(CommandResult cResult, Command command){
+    public static void print(CommandResult cResult, String additionalInfo){
 
         switch (cResult)
         {
-
+            case FILE_SUCCESSFULLY_OPENED:
+                System.out.println(cResult.getCommandResultMessage() + additionalInfo);
+                break;
         }
 
-       System.out.println(cResult.getCommandResultMessage());
+
 
     }
     //-----Overrides-----

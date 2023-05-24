@@ -3,6 +3,7 @@ package main.commandlineinterface.commands;
 import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commandvalidators.OpenCommandValidator;
+import main.svgparser.CommandProcessor;
 
 public class OpenCommand extends BaseCommand {
 
@@ -29,14 +30,17 @@ public class OpenCommand extends BaseCommand {
 
     //-----Overrides----
     @Override
-    public CommandResult executeCommand() {
+    public CommandResult executeCommand( CommandProcessor commandProcessor) {
         OpenCommandValidator openCommandValidator = new OpenCommandValidator();
         CommandResult cResult = openCommandValidator.validate(this);
 
-        if(cResult == CommandResult.COMMAND_SUCCESSFUL)
+        if(cResult != CommandResult.COMMAND_SUCCESSFUL)
+            return cResult;
+
             filePath = getUserInputCommand()[COMMAND_PATH_INDEX];
 
-        return cResult;
+
+        return commandProcessor.openFile(this);
 
     }
 }

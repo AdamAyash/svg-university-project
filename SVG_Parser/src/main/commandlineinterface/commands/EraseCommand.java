@@ -4,6 +4,7 @@ import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commandvalidators.BaseCommandValidator;
 import main.commandlineinterface.commandvalidators.EraseCommandValidator;
+import main.svgparser.CommandProcessor;
 
 
 //класът описва команда за изтриване на фигура
@@ -33,10 +34,15 @@ public class EraseCommand extends BaseCommand {
     //-----Overrides----
 
     @Override
-    public CommandResult executeCommand() {
+    public CommandResult executeCommand( CommandProcessor commandProcessor) {
         BaseCommandValidator eraseCommandValidator = new EraseCommandValidator();
 
-        return eraseCommandValidator.validate(this);
+        CommandResult cResult =  eraseCommandValidator.validate(this);
+
+        if(cResult != CommandResult.COMMAND_FAILED)
+            return cResult;
+
+        return commandProcessor.eraseShape(this);
 
     }
 }

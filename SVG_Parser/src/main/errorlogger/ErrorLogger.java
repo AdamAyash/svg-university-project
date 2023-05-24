@@ -1,6 +1,5 @@
 package main.errorlogger;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,12 +23,12 @@ public final class ErrorLogger {
             FileWriter fileWriter = new FileWriter(FILE_NAME, true);
             PrintWriter printWriter = new PrintWriter(fileWriter);
 
-            printWriter.println("[" + currentDate.toString() +"]" + " " + exceptionMessage + "\n");
+            printWriter.println("[" + currentDate.toString() +"]" + " " + exceptionMessage +  "\n" );
             printWriter.close();
 
         }
         catch(IOException e){
-            //main.commandlineinterface.PrintWriter.PrintWriter.print("");
+            main.commandlineinterface.PrintWriter.PrintWriter.print("Error logger failed");
         }
     //-----Overrides----
 

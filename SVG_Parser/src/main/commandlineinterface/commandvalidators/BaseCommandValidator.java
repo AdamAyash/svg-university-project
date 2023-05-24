@@ -5,7 +5,7 @@ import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commands.base.Command;
 
 //класът служи за базовата валидация на една команда за в момента броя на параметрите
-public abstract class BaseCommandValidator implements CommandValidator{
+public class BaseCommandValidator implements CommandValidator{
 
     //-----Constants-----
 

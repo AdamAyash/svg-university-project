@@ -11,7 +11,6 @@ public class SVGParser {
 
     //грижи се за генерирането на командите
     private  CommandLineInterface commandLineInterface;
-
     //грижи се за обработката на командите
     private CommandProcessor commandProcessor;
 
@@ -24,15 +23,9 @@ public class SVGParser {
     //-----Methods-----
     public void start(){
         CommandResult cResult;
-        while((cResult = commandLineInterface.run()) != CommandResult.EXIT_PROGRAM){
-            if(cResult == CommandResult.COMMAND_FAILED) {
-                PrintWriter.print(cResult.getCommandResultMessage());
-                continue;
-            }
 
-          cResult =  this.commandProcessor.executeCommand(commandLineInterface.getCurrentCommand());
-          PrintWriter.print(cResult, commandLineInterface.getCurrentCommand());
-
+        while((cResult = commandLineInterface.run(commandProcessor)) != CommandResult.EXIT_PROGRAM)
+        {
         }
         PrintWriter.print(CommandResult.EXIT_PROGRAM.getCommandResultMessage());
     }

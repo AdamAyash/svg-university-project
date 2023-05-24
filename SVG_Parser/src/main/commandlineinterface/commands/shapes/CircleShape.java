@@ -1,6 +1,5 @@
 package main.commandlineinterface.commands.shapes;
 
-
 //калсът описва кръг и параметрите му
 public class CircleShape extends BasicShape {
 

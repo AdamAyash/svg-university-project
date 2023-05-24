@@ -194,3 +194,69 @@
 
 [Sun May 14 21:26:09 EEST 2023] java.lang.IndexOutOfBoundsException: Index 11 out of bounds for length 3
 
+[Tue May 16 08:36:45 EEST 2023] java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 2
+
+[Tue May 16 08:37:10 EEST 2023] java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 2
+
+[Tue May 16 08:37:27 EEST 2023] java.lang.NumberFormatException: For input string: ""
+
+[Tue May 16 08:37:31 EEST 2023] java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 2
+
+[Tue May 16 08:42:37 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Tue May 16 08:44:51 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Fri May 19 09:58:51 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sat May 20 10:47:04 EEST 2023] main.exceptions.CommandNotImplementedException: "opem" is not recognized as internal or external command.
+
+[Sat May 20 10:47:59 EEST 2023] main.exceptions.CommandNotImplementedException: "opem" is not recognized as internal or external command.
+
+[Sat May 20 10:50:11 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sat May 20 10:59:40 EEST 2023] main.exceptions.CommandNotImplementedException: "пне" is not recognized as internal or external command.
+
+[Sat May 20 12:31:24 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+
+[Sat May 20 12:32:01 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+
+[Sat May 20 12:32:13 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+
+[Sat May 20 12:32:33 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sat May 20 13:54:44 EEST 2023] main.exceptions.CommandNotImplementedException: "help" is not recognized as internal or external command.
+
+[Sat May 20 13:57:10 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sat May 20 14:59:53 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sat May 20 15:07:00 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Sun May 21 09:48:04 EEST 2023] main.exceptions.CommandNotImplementedException: "witin" is not recognized as internal or external command.
+
+[Sun May 21 10:04:08 EEST 2023] main.exceptions.CommandNotImplementedException: "((RectangleShape)" is not recognized as internal or external command.
+
+[Sun May 21 10:07:55 EEST 2023] main.exceptions.CommandNotImplementedException: "((RectangleShape)" is not recognized as internal or external command.
+
+[Sun May 21 13:13:57 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+
+[Mon May 22 08:49:12 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 22 08:55:24 EEST 2023] main.exceptions.CommandNotImplementedException: "dad" is not recognized as internal or external command.
+
+[Mon May 22 08:55:25 EEST 2023] main.exceptions.CommandNotImplementedException: "dadad" is not recognized as internal or external command.
+
+[Mon May 22 08:59:54 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 22 09:02:03 EEST 2023] java.lang.NullPointerException: Cannot invoke "java.io.File.toURI()" because "f" is null
+
+[Mon May 22 10:00:28 EEST 2023] main.exceptions.CommandNotImplementedException: "sace" is not recognized as internal or external command.
+
+[Mon May 22 10:10:18 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+
+[Mon May 22 10:10:35 EEST 2023] main.exceptions.CommandNotImplementedException: "C:\Users\mobir\Documents\Projects\SVG_OOP_Project\SVG_Parser\file.svg" is not recognized as internal or external command.
+
+[Mon May 22 11:16:29 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+
+[Mon May 22 11:17:49 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+

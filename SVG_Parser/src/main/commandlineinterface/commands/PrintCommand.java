@@ -2,8 +2,9 @@ package main.commandlineinterface.commands;
 
 import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.base.BaseCommand;
+import main.commandlineinterface.commandvalidators.BaseCommandValidator;
 import main.commandlineinterface.commandvalidators.CommandValidator;
-import main.commandlineinterface.commandvalidators.PrintCommandValidator;
+import main.svgparser.CommandProcessor;
 
 //команда за принтиране на подържаните фигури на конзолата
 public class PrintCommand extends BaseCommand {
@@ -21,8 +22,13 @@ public class PrintCommand extends BaseCommand {
 
     //-----Overrides----
     @Override
-    public CommandResult executeCommand() {
-        CommandValidator printCommandValidator = new PrintCommandValidator();
-        return printCommandValidator.validate(this);
+    public CommandResult executeCommand(CommandProcessor commandProcessor) {
+        CommandValidator printCommandValidator = new BaseCommandValidator();
+
+       CommandResult cResult =  printCommandValidator.validate(this);
+       if(cResult != CommandResult.COMMAND_SUCCESSFUL)
+           return cResult;
+
+        return commandProcessor.printAllShapes();
     }
 }

@@ -12,7 +12,9 @@ public enum SupportedCommands {
     ERASE("erase", 1),
     TRANSLATE("translate", 3),
     WITHIN("within", 0),
-    CREATE("create", 0);
+    CREATE("create", 0),
+    SAVE_AS("saveas ", 1),
+    HELP("help", 0);
 
     //описва ключовата дума на командата
     private final String COMMAND;

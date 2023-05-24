@@ -4,7 +4,7 @@ import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commandvalidators.CommandValidator;
 import main.commandlineinterface.commandvalidators.ExitCommandValidator;
-
+import main.svgparser.CommandProcessor;
 
 
 //класът описва команда за изход от програмата
@@ -23,7 +23,7 @@ public class ExitCommand extends BaseCommand {
 
     //-----Overrides-----
     @Override
-    public CommandResult executeCommand() {
+    public CommandResult executeCommand(CommandProcessor commandProcessor) {
         CommandValidator exitCommandValidator = new ExitCommandValidator();
 
         return  exitCommandValidator.validate(this);

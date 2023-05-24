@@ -1,5 +1,4 @@
 package main.commandlineinterface.commandvalidators;
-
 import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.CreateCommand;
 import main.commandlineinterface.commands.base.Command;
@@ -19,6 +18,9 @@ public class CreateCommandValidator extends BaseCommandValidator{
 
     //константа оказваща броя на ненувните параметри при валидацията на фигурите
     private final int UNNECESSARY_ARGUMENTS_COUNT = 3;
+
+
+    private final String SHAPE_NOT_SUPPORTED_MESSAGE = "The shape you entered is not supported";
 
     private final int SHAPE_INDEX = 1;
 
@@ -61,8 +63,12 @@ public class CreateCommandValidator extends BaseCommandValidator{
         return currentColor;
     }
 
-    //проверява дали параметрите подадени в командата като вход съвпадат с теьи от енумерацията на съответната фигура
+    //проверява дали параметрите подадени в командата като вход съвпадат с тези от енумерацията на съответната фигура
     private boolean checkShapeParameterCount(CreateCommand command, SupportedShapes currentShape){
+
+        if((command.getUserInputCommand().length - UNNECESSARY_ARGUMENTS_COUNT + 1) == currentShape.getParametersCount() && command.isColorless())
+            return true;
+
         if((command.getUserInputCommand().length - UNNECESSARY_ARGUMENTS_COUNT) == currentShape.getParametersCount())
             return true;
 
@@ -92,7 +98,7 @@ public class CreateCommandValidator extends BaseCommandValidator{
                 return new LineShape(firstXCoordinate, secondXCoordinate, firstYCoordinate, secondYCoordinate);
 
         }
-        throw new ShapeNotSupportedException("");
+        throw new ShapeNotSupportedException(SHAPE_NOT_SUPPORTED_MESSAGE);
     }
 
     //-----Overrides----
@@ -107,14 +113,14 @@ public class CreateCommandValidator extends BaseCommandValidator{
             SupportedShapes shape = isShapeSupported(createCommand);
             SupportedColors color = isColorSupported(createCommand);
 
-            if (shape != null && color != null) {
-                if (checkShapeParameterCount(createCommand, shape)) {
+                if (checkShapeParameterCount(createCommand, shape) && shape != null && (color != null || createCommand.isColorless())) {
                     createCommand.setShape(checkAndAssignParameters(createCommand, shape));
-                    createCommand.getShape().setColor(color.getColor());
+
+                    if(!createCommand.isColorless())
+                    createCommand.getShape().setColor(color.getColor(), createCommand.isColorless());
+
                     cResult = CommandResult.COMMAND_SUCCESSFUL;
                 }
-
-            }
         }
         catch (ArrayIndexOutOfBoundsException| NullPointerException|
                 NumberFormatException |  ShapeNotSupportedException e){
