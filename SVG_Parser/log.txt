@@ -330,3 +330,5 @@
 
 [Thu May 25 09:58:22 EEST 2023] main.exceptions.CommandNotImplementedException: "prinbt" is not recognized as internal or external command.
 
+[Sat May 27 13:24:06 EEST 2023] main.exceptions.CommandNotImplementedException: "opem" is not recognized as internal or external command.
+

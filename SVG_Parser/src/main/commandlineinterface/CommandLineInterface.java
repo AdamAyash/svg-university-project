@@ -1,6 +1,5 @@
 package main.commandlineinterface;
 
-import com.sun.source.tree.ReturnTree;
 import main.commandlineinterface.PrintWriter.PrintWriter;
 import main.commandlineinterface.commandfactory.CommandFactory;
 import main.commandlineinterface.commandresult.CommandResult;

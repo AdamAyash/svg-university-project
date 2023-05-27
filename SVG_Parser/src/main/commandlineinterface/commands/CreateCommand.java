@@ -1,7 +1,6 @@
 package main.commandlineinterface.commands;
 
 import main.commandlineinterface.CommandLineInterface;
-import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commands.shapes.BasicShape;
 import main.commandlineinterface.commandvalidators.BaseCommandValidator;

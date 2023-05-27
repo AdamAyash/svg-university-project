@@ -28,6 +28,24 @@ public class CommandProcessor {
     //оказва името на главния таг в svg файла
     private final String ROOT_ELEMENT = "svg";
 
+    private final String RECTANGLE_X_COORDINATE = "x";
+    private final String RECTANGLE_Y_COORDINATE = "y";
+    private final String RECTANGLE_WIDTH = "width";
+    private final String RECTANGLE_HEIGHT = "height";
+
+    private final String CIRCLE_X_COORDINATE = "cx";
+    private final String CIRCLE_Y_COORDINATE = "cy";
+    private final String CIRCLE_RADIUS = "radius";
+
+    private final String LINE_FIRST_X_COORDINATE = "x1";
+    private final String LINE_SECOND_X_COORDINATE = "x2";
+    private final String LINE_FIRST_Y_COORDINATE = "y1";
+    private final String LINE_SECOND_Y_COORDINATE = "y2";
+    private final String FILL = "fill";
+    private final String STROKE = "stroke";
+
+
+
     //-----Members-----
     //оказва дали има отворен файл в момента
     private boolean isFileOpened;
@@ -93,10 +111,10 @@ public class CommandProcessor {
                 Element currentShape = (Element) shapesList.get(i);
 
                 if(currentShape.getTagName().equals(SupportedShapes.RECTANGLE.getSvgTag())) {
-                        double x = Double.parseDouble(currentShape.getAttribute("x"));
-                        double y = Double.parseDouble(currentShape.getAttribute("y"));
-                        double width = Double.parseDouble(currentShape.getAttribute("width"));
-                        double height = Double.parseDouble(currentShape.getAttribute("height"));
+                        double x = Double.parseDouble(currentShape.getAttribute(RECTANGLE_X_COORDINATE));
+                        double y = Double.parseDouble(currentShape.getAttribute(RECTANGLE_Y_COORDINATE));
+                        double width = Double.parseDouble(currentShape.getAttribute(RECTANGLE_WIDTH));
+                        double height = Double.parseDouble(currentShape.getAttribute(RECTANGLE_HEIGHT));
 
                             if(shape instanceof  RectangleShape) {
                                 if (ShapeUtilities.isRectangleWithinRectangle(x, y, width, height, ((RectangleShape) shape).getXCoordinate(), ((RectangleShape) shape).getYCoordinate(), ((RectangleShape) shape).getWidth(), ((RectangleShape) shape).getHeight())) {
@@ -111,9 +129,9 @@ public class CommandProcessor {
                          }
                 }
                    if(currentShape.getTagName().equals(SupportedShapes.CIRCLE.getSvgTag())) {
-                       double cx = Double.parseDouble(currentShape.getAttribute("cx"));
-                       double cy = Double.parseDouble(currentShape.getAttribute("cy"));
-                       double radius = Double.parseDouble(currentShape.getAttribute("r"));
+                       double cx = Double.parseDouble(currentShape.getAttribute(CIRCLE_X_COORDINATE));
+                       double cy = Double.parseDouble(currentShape.getAttribute(CIRCLE_Y_COORDINATE));
+                       double radius = Double.parseDouble(currentShape.getAttribute(CIRCLE_RADIUS));
 
                        if(shape instanceof RectangleShape) {
                            double closestX = Math.max((((RectangleShape) shape).getXCoordinate()), Math.min(cx, ((RectangleShape) shape).getXCoordinate() + ((RectangleShape) shape).getWidth()));
@@ -135,10 +153,10 @@ public class CommandProcessor {
 
                    if(currentShape.getTagName().equals(SupportedShapes.LINE.getSvgTag())){
 
-                       double firstXCoordinate = Double.parseDouble(currentShape.getAttribute("x1"));
-                       double secondXCoordinate = Double.parseDouble(currentShape.getAttribute("x2"));
-                       double  firstYCoordinate = Double.parseDouble(currentShape.getAttribute("y1"));
-                       double secondYCoordinate = Double.parseDouble(currentShape.getAttribute("y2"));
+                       double firstXCoordinate = Double.parseDouble(currentShape.getAttribute(LINE_FIRST_X_COORDINATE));
+                       double secondXCoordinate = Double.parseDouble(currentShape.getAttribute(LINE_SECOND_X_COORDINATE));
+                       double  firstYCoordinate = Double.parseDouble(currentShape.getAttribute(LINE_FIRST_Y_COORDINATE));
+                       double secondYCoordinate = Double.parseDouble(currentShape.getAttribute(LINE_SECOND_Y_COORDINATE));
 
                        if(shape instanceof RectangleShape) {
                            if (ShapeUtilities.isLineWithinRectangle(((RectangleShape) shape).getXCoordinate(), ((RectangleShape) shape).getYCoordinate(), ((RectangleShape) shape).getWidth(), ((RectangleShape) shape).getHeight(), firstXCoordinate, secondXCoordinate, firstYCoordinate, secondYCoordinate))
@@ -158,21 +176,19 @@ public class CommandProcessor {
     }
 
     private void checkShapeTypeAndTranslate(Element currentShape, TranslateCommand translateCommand){
-        switch (currentShape.getTagName()){
-            case "rect":
-                currentShape.setAttribute("y", String.valueOf(translateCommand.getVerticalParameterValue() + Double.parseDouble(currentShape.getAttribute("y"))));
-                currentShape.setAttribute("x", String.valueOf(translateCommand.getHorizontalParameterValue() + Double.parseDouble(currentShape.getAttribute("x"))));
-                break;
-            case "circle":
-                currentShape.setAttribute("cy", String.valueOf(translateCommand.getVerticalParameterValue() + Double.parseDouble(currentShape.getAttribute("cy"))));
-                currentShape.setAttribute("cx", String.valueOf(translateCommand.getHorizontalParameterValue() + Double.parseDouble(currentShape.getAttribute("cx"))));
-                break;
-            case "line":
-                currentShape.setAttribute("x1", String.valueOf(translateCommand.getVerticalParameterValue() + Double.parseDouble(currentShape.getAttribute("x1"))));
-                currentShape.setAttribute("x2", String.valueOf(translateCommand.getHorizontalParameterValue() + Double.parseDouble(currentShape.getAttribute("x2"))));
-                currentShape.setAttribute("y1", String.valueOf(translateCommand.getVerticalParameterValue() + Double.parseDouble(currentShape.getAttribute("y1"))));
-                currentShape.setAttribute("y2", String.valueOf(translateCommand.getHorizontalParameterValue() + Double.parseDouble(currentShape.getAttribute("y2"))));
-                break;
+       if(currentShape.getTagName().equals(SupportedShapes.RECTANGLE.getSvgTag())) {
+           currentShape.setAttribute(RECTANGLE_Y_COORDINATE, String.valueOf(translateCommand.getVerticalParameterValue() + Double.parseDouble(currentShape.getAttribute(RECTANGLE_Y_COORDINATE))));
+           currentShape.setAttribute(RECTANGLE_X_COORDINATE, String.valueOf(translateCommand.getHorizontalParameterValue() + Double.parseDouble(currentShape.getAttribute(RECTANGLE_X_COORDINATE))));
+       }
+        if(currentShape.getTagName().equals(SupportedShapes.CIRCLE.getSvgTag())) {
+            currentShape.setAttribute(CIRCLE_Y_COORDINATE, String.valueOf(translateCommand.getVerticalParameterValue() + Double.parseDouble(currentShape.getAttribute(CIRCLE_Y_COORDINATE))));
+            currentShape.setAttribute(CIRCLE_X_COORDINATE, String.valueOf(translateCommand.getHorizontalParameterValue() + Double.parseDouble(currentShape.getAttribute(CIRCLE_X_COORDINATE))));
+        }
+        if(currentShape.getTagName().equals(SupportedShapes.LINE.getSvgTag())) {
+                currentShape.setAttribute(LINE_FIRST_Y_COORDINATE, String.valueOf(translateCommand.getVerticalParameterValue() + Double.parseDouble(currentShape.getAttribute(LINE_FIRST_Y_COORDINATE))));
+                currentShape.setAttribute(LINE_FIRST_X_COORDINATE, String.valueOf(translateCommand.getHorizontalParameterValue() + Double.parseDouble(currentShape.getAttribute(LINE_FIRST_X_COORDINATE))));
+                currentShape.setAttribute(LINE_SECOND_Y_COORDINATE, String.valueOf(translateCommand.getVerticalParameterValue() + Double.parseDouble(currentShape.getAttribute(LINE_SECOND_Y_COORDINATE))));
+                currentShape.setAttribute(LINE_SECOND_X_COORDINATE, String.valueOf(translateCommand.getHorizontalParameterValue() + Double.parseDouble(currentShape.getAttribute(LINE_SECOND_X_COORDINATE))));
         }
     }
 
@@ -241,17 +257,17 @@ public class CommandProcessor {
 
         RectangleShape rectangleShape =  (RectangleShape)command.getShape();
 
-        Element rectangleElement = currentDocument.createElement("rect");
-        rectangleElement.setAttribute("x", String.valueOf(rectangleShape.getXCoordinate()));
-        rectangleElement.setAttribute("y", String.valueOf(rectangleShape.getYCoordinate()));
-        rectangleElement.setAttribute("width", String.valueOf(rectangleShape.getWidth()));
-        rectangleElement.setAttribute("height", String.valueOf(rectangleShape.getHeight()));
-        rectangleElement.setAttribute("fill", rectangleShape.getColor());
+        Element rectangleElement = currentDocument.createElement(SupportedShapes.RECTANGLE.getSvgTag());
+        rectangleElement.setAttribute(RECTANGLE_X_COORDINATE, String.valueOf(rectangleShape.getXCoordinate()));
+        rectangleElement.setAttribute(RECTANGLE_Y_COORDINATE, String.valueOf(rectangleShape.getYCoordinate()));
+        rectangleElement.setAttribute(RECTANGLE_WIDTH, String.valueOf(rectangleShape.getWidth()));
+        rectangleElement.setAttribute(RECTANGLE_HEIGHT, String.valueOf(rectangleShape.getHeight()));
+        rectangleElement.setAttribute(FILL, rectangleShape.getColor());
         rootElement.appendChild(rectangleElement);
         if(!this.shapesList.add(rectangleElement))
             return  false;
 
-        PrintWriter.print(CommandResult.SHAPE_SUCCESSFULLY_CREATED.getCommandResultMessage() + "rectangle" + " (" + shapesList.size() + ")");
+        PrintWriter.print(CommandResult.SHAPE_SUCCESSFULLY_CREATED.getCommandResultMessage() + SupportedShapes.RECTANGLE.getSupportedShape() + " (" + shapesList.size() + ")");
         return true;
     }
 
@@ -263,16 +279,16 @@ public class CommandProcessor {
 
         LineShape lineShape =  (LineShape)command.getShape();
 
-        Element circleElement = currentDocument.createElement("line");
-        circleElement.setAttribute("x1", String.valueOf(lineShape.getFirstXCoordinate()));
-        circleElement.setAttribute("y1", String.valueOf(lineShape.getFirstYCoordinate()));
-        circleElement.setAttribute("x2", String.valueOf(lineShape.getSecondXCoordinate()));
-        circleElement.setAttribute("y2", String.valueOf(lineShape.getSecondYCoordinate()));
-        circleElement.setAttribute("stroke", lineShape.getColor());
+        Element circleElement = currentDocument.createElement(SupportedShapes.LINE.getSvgTag());
+        circleElement.setAttribute(LINE_FIRST_X_COORDINATE, String.valueOf(lineShape.getFirstXCoordinate()));
+        circleElement.setAttribute(LINE_FIRST_Y_COORDINATE, String.valueOf(lineShape.getFirstYCoordinate()));
+        circleElement.setAttribute(LINE_SECOND_X_COORDINATE, String.valueOf(lineShape.getSecondXCoordinate()));
+        circleElement.setAttribute(LINE_SECOND_Y_COORDINATE, String.valueOf(lineShape.getSecondYCoordinate()));
+        circleElement.setAttribute(STROKE, lineShape.getColor());
         rootElement.appendChild(circleElement);
         if(!this.shapesList.add(circleElement))
             return false;
-        PrintWriter.print(CommandResult.SHAPE_SUCCESSFULLY_CREATED.getCommandResultMessage() + "line" + " (" + shapesList.size() + ")");
+        PrintWriter.print(CommandResult.SHAPE_SUCCESSFULLY_CREATED.getCommandResultMessage() + SupportedShapes.LINE.getSupportedShape() + " (" + shapesList.size() + ")");
         return true;
     }
 
@@ -283,16 +299,16 @@ public class CommandProcessor {
 
         CircleShape circleShape =  (CircleShape)command.getShape();
 
-        Element circleElement = currentDocument.createElement("circle");
-        circleElement.setAttribute("cx", String.valueOf(circleShape.getCenterXCoordinate()));
-        circleElement.setAttribute("cy", String.valueOf(circleShape.getCenterYCoordinate()));
-        circleElement.setAttribute("r", String.valueOf(circleShape.getRadius()));
-        circleElement.setAttribute("fill", circleShape.getColor());
+        Element circleElement = currentDocument.createElement(SupportedShapes.CIRCLE.getSvgTag());
+        circleElement.setAttribute(CIRCLE_X_COORDINATE, String.valueOf(circleShape.getCenterXCoordinate()));
+        circleElement.setAttribute(CIRCLE_Y_COORDINATE, String.valueOf(circleShape.getCenterYCoordinate()));
+        circleElement.setAttribute(CIRCLE_RADIUS, String.valueOf(circleShape.getRadius()));
+        circleElement.setAttribute(FILL, circleShape.getColor());
         rootElement.appendChild(circleElement);
        if(!this.shapesList.add(circleElement))
            return false;
 
-        PrintWriter.print(CommandResult.SHAPE_SUCCESSFULLY_CREATED.getCommandResultMessage() + "circle" + " (" + shapesList.size() + ")");
+        PrintWriter.print(CommandResult.SHAPE_SUCCESSFULLY_CREATED.getCommandResultMessage() + SupportedShapes.CIRCLE.getSupportedShape() + " (" + shapesList.size() + ")");
         return true;
     }
 
@@ -373,7 +389,7 @@ public class CommandProcessor {
         stringBuilder.append((index+1) +  ". " + this.shapesList.get(index).getTagName() + " ");
         NamedNodeMap shapeAttributes = this.shapesList.get(index).getAttributes();
         for (int j = 0; j < shapeAttributes.getLength(); j++) {
-            stringBuilder.append(shapeAttributes.item(j).getNodeValue() + " ");
+            stringBuilder.append(shapeAttributes.item(j).getNodeName() + "=" + shapeAttributes.item(j).getNodeValue() + " ");
         }
         PrintWriter.print(stringBuilder.toString());
     }
@@ -421,8 +437,6 @@ public class CommandProcessor {
         return true;
 
     }
-
-
 
     //затваря текущия файл, без да запазва промените по него
     public boolean closeCurrentFile(){

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SVG_Parser:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SVG_Parser_jar</output-path>
+    <root id="archive" name="SVG_Parser.jar">
+      <element id="module-output" name="SVG_Parser" />
+    </root>
+  </artifact>
+</component>
