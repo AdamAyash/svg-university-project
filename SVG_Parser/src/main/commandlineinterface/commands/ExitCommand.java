@@ -1,5 +1,6 @@
 package main.commandlineinterface.commands;
 
+import main.commandlineinterface.CommandLineInterface;
 import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commandvalidators.CommandValidator;
@@ -23,9 +24,16 @@ public class ExitCommand extends BaseCommand {
 
     //-----Overrides-----
     @Override
-    public CommandResult executeCommand(CommandProcessor commandProcessor) {
+    public boolean executeCommand(CommandProcessor commandProcessor, CommandLineInterface commandLineInterface) {
         CommandValidator exitCommandValidator = new ExitCommandValidator();
+        this.setCommandLineInterface(commandLineInterface);
 
-        return  exitCommandValidator.validate(this);
+        if(exitCommandValidator.validate(this))
+             commandLineInterface.setRunning(false);
+        else
+            return false;
+
+        return true;
+
     }
 }

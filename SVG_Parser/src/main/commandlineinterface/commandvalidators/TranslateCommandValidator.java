@@ -28,13 +28,13 @@ public class TranslateCommandValidator extends BaseCommandValidator{
             } else {
                 verticalParameter = translateCommand.getUserInputCommand()[2];
             }
-            String verticalKeyword = verticalParameter.replaceAll("\\d+", "");
+            String verticalKeyword = verticalParameter.replaceAll("-?\\.?\\d+", "");
 
             if(!verticalKeyword.equals("vertical="))
                 result = false;
 
             String verticalParameterValue =  verticalParameter.replaceAll("[a-zA-Z]+\\=","");
-            translateCommand.setVerticalParameterValue( Integer.parseInt(verticalParameterValue));
+            translateCommand.setVerticalParameterValue( Double.parseDouble(verticalParameterValue));
         }
         catch (ArrayIndexOutOfBoundsException | NumberFormatException e){
             result = false;
@@ -55,13 +55,13 @@ public class TranslateCommandValidator extends BaseCommandValidator{
             } else {
                 horizontalParameter = translateCommand.getUserInputCommand()[3];
             }
-            String verticalKeyword = horizontalParameter.replaceAll("\\d+", "");
+            String verticalKeyword = horizontalParameter.replaceAll("-?\\.?\\d+", "");
 
             if(!verticalKeyword.equals("horizontal="))
                 result = false;
 
             String verticalParameterValue =  horizontalParameter.replaceAll("[a-zA-Z]+\\=","");
-            translateCommand.setHorizontalParameterValue( Integer.parseInt(verticalParameterValue));
+            translateCommand.setHorizontalParameterValue(Double.parseDouble(verticalParameterValue));
         }
         catch (ArrayIndexOutOfBoundsException | NumberFormatException e){
             result = false;
@@ -73,8 +73,7 @@ public class TranslateCommandValidator extends BaseCommandValidator{
     //-----Overrides----
 
     @Override
-    public CommandResult validate(Command command) {
-        CommandResult cResult = CommandResult.COMMAND_SUCCESSFUL;
+    public boolean validate(Command command) {
         try {
             TranslateCommand translateCommand = (TranslateCommand)command;
 
@@ -85,17 +84,17 @@ public class TranslateCommandValidator extends BaseCommandValidator{
                translateCommand.setIndexOfShapeTobeErased(Integer.parseInt(translateCommand.getUserInputCommand()[1]));
 
            else
-                cResult = CommandResult.COMMAND_FAILED;
+                return false;
 
             if(!validateVerticalParameter(translateCommand) || !validateHorizontalParameter(translateCommand))
-                cResult = CommandResult.COMMAND_FAILED;
+                return false;
 
         }
         catch (ArrayIndexOutOfBoundsException | NumberFormatException e){
-            cResult = CommandResult.COMMAND_FAILED;
             ErrorLogger.logError(e.toString());
+            return false;
         }
 
-        return cResult;
+        return true;
     }
 }

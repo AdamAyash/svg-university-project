@@ -1,5 +1,6 @@
 package main.commandlineinterface.commands;
 
+import main.commandlineinterface.CommandLineInterface;
 import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commandvalidators.BaseCommandValidator;
@@ -34,13 +35,12 @@ public class EraseCommand extends BaseCommand {
     //-----Overrides----
 
     @Override
-    public CommandResult executeCommand( CommandProcessor commandProcessor) {
+    public boolean executeCommand( CommandProcessor commandProcessor, CommandLineInterface commandLineInterface) {
         BaseCommandValidator eraseCommandValidator = new EraseCommandValidator();
+        this.setCommandLineInterface(commandLineInterface);
 
-        CommandResult cResult =  eraseCommandValidator.validate(this);
-
-        if(cResult != CommandResult.COMMAND_FAILED)
-            return cResult;
+     if(!eraseCommandValidator.validate(this))
+            return false;
 
         return commandProcessor.eraseShape(this);
 

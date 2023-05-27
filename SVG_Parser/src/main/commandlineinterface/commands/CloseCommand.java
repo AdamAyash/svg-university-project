@@ -1,6 +1,6 @@
 package main.commandlineinterface.commands;
 
-import main.commandlineinterface.commandresult.CommandResult;
+import main.commandlineinterface.CommandLineInterface;
 import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commandvalidators.BaseCommandValidator;
 import main.commandlineinterface.commandvalidators.CommandValidator;
@@ -15,7 +15,7 @@ public class CloseCommand extends BaseCommand {
     //-----Members-----
 
     //-----Constructor-----
-    public CloseCommand(String[] userInputCommand, int commandParameterCount) {
+    public CloseCommand(String[] userInputCommand, int commandParameterCount ) {
         super(userInputCommand, commandParameterCount);
     }
 
@@ -24,12 +24,13 @@ public class CloseCommand extends BaseCommand {
     //-----Overrides----
 
     @Override
-    public CommandResult executeCommand(CommandProcessor commandProcessor) {
+    public boolean executeCommand(CommandProcessor commandProcessor, CommandLineInterface commandLineInterface) {
         CommandValidator closeCommandValidator = new BaseCommandValidator();
-        CommandResult cResult = closeCommandValidator.validate(this);
+        this.setCommandLineInterface(commandLineInterface);
 
-        if(cResult != CommandResult.COMMAND_SUCCESSFUL)
-            return cResult;
+        if(!closeCommandValidator.validate(this))
+            return false;
+
 
         return commandProcessor.closeCurrentFile();
     }

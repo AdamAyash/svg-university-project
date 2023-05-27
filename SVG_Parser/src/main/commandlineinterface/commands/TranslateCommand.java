@@ -1,5 +1,6 @@
 package main.commandlineinterface.commands;
 
+import main.commandlineinterface.CommandLineInterface;
 import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commandvalidators.TranslateCommandValidator;
@@ -12,9 +13,9 @@ public class TranslateCommand extends BaseCommand {
     //-----Members-----
     private boolean translateAllShapes;
 
-    private int verticalParameterValue;
+    private double verticalParameterValue;
 
-    private int horizontalParameterValue;
+    private double horizontalParameterValue;
 
     private int indexOfShapeTobeErased;
 
@@ -28,11 +29,11 @@ public class TranslateCommand extends BaseCommand {
         return translateAllShapes;
     }
 
-    public int getVerticalParameterValue() {
+    public double getVerticalParameterValue() {
         return verticalParameterValue;
     }
 
-    public void setVerticalParameterValue(int verticalParameterValue) {
+    public void setVerticalParameterValue(double verticalParameterValue) {
         this.verticalParameterValue = verticalParameterValue;
     }
 
@@ -40,7 +41,7 @@ public class TranslateCommand extends BaseCommand {
         this.translateAllShapes = translateAllShapes;
     }
 
-    public int getHorizontalParameterValue() {
+    public double getHorizontalParameterValue() {
         return horizontalParameterValue;
     }
 
@@ -48,7 +49,7 @@ public class TranslateCommand extends BaseCommand {
         return indexOfShapeTobeErased;
     }
 
-    public void setHorizontalParameterValue(int horizontalParameterValue) {
+    public void setHorizontalParameterValue(double horizontalParameterValue) {
         this.horizontalParameterValue = horizontalParameterValue;
     }
 
@@ -58,13 +59,12 @@ public class TranslateCommand extends BaseCommand {
 
     //-----Overrides----
     @Override
-    public CommandResult executeCommand(CommandProcessor commandProcessor) {
+    public boolean executeCommand(CommandProcessor commandProcessor, CommandLineInterface commandLineInterface) {
         TranslateCommandValidator translateCommandValidator = new TranslateCommandValidator();
+        this.setCommandLineInterface(commandLineInterface);
 
-        CommandResult cResult = translateCommandValidator.validate(this);
-
-        if(cResult != CommandResult.COMMAND_SUCCESSFUL)
-            return cResult;
+        if(!translateCommandValidator.validate(this))
+                return false;
 
         return commandProcessor.translate(this);
     }

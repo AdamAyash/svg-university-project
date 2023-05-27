@@ -260,3 +260,73 @@
 
 [Mon May 22 11:17:49 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
 
+[Wed May 24 11:08:40 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+
+[Wed May 24 12:16:43 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 24 12:24:26 EEST 2023] java.lang.IndexOutOfBoundsException: Index 7 out of bounds for length 7
+
+[Wed May 24 12:47:42 EEST 2023] main.exceptions.CommandNotImplementedException: "exit\" is not recognized as internal or external command.
+
+[Wed May 24 17:03:59 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 24 17:04:07 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 24 17:07:11 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+
+[Wed May 24 17:07:23 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 24 17:07:23 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 24 17:07:23 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 24 17:07:28 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+
+[Wed May 24 17:08:03 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+
+[Wed May 24 17:20:45 EEST 2023] main.exceptions.CommandNotImplementedException: "opne" is not recognized as internal or external command.
+
+[Wed May 24 17:21:04 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+
+[Wed May 24 17:21:43 EEST 2023] java.lang.NumberFormatException: For input string: "vertical"
+
+[Wed May 24 17:21:54 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 24 17:21:54 EEST 2023] java.lang.NumberFormatException: For input string: "vertical"
+
+[Wed May 24 17:21:56 EEST 2023] java.lang.NumberFormatException: For input string: "vertical"
+
+[Wed May 24 17:30:57 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 24 18:21:06 EEST 2023] main.exceptions.CommandNotImplementedException: "circle" is not recognized as internal or external command.
+
+[Wed May 24 18:29:53 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 24 18:29:53 EEST 2023] java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+
+[Wed May 24 18:30:44 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 24 18:34:46 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+
+[Wed May 24 18:34:57 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 24 18:34:57 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+
+[Wed May 24 21:10:37 EEST 2023] main.exceptions.CommandNotImplementedException: "exi" is not recognized as internal or external command.
+
+[Wed May 24 21:11:17 EEST 2023] main.exceptions.CommandNotImplementedException: "file.t" is not recognized as internal or external command.
+
+[Wed May 24 21:26:13 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 24 21:28:54 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Wed May 24 21:28:59 EEST 2023] main.exceptions.CommandNotImplementedException: "dad" is not recognized as internal or external command.
+
+[Wed May 24 23:53:20 EEST 2023] java.lang.NumberFormatException
+
+[Wed May 24 23:53:30 EEST 2023] java.lang.NumberFormatException
+
+[Thu May 25 09:14:02 EEST 2023] java.lang.NumberFormatException
+
+[Thu May 25 09:58:22 EEST 2023] main.exceptions.CommandNotImplementedException: "prinbt" is not recognized as internal or external command.
+

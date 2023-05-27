@@ -1,11 +1,10 @@
 package main.commandlineinterface.commands.base;
 
-import main.commandlineinterface.commandresult.CommandResult;
+import main.commandlineinterface.CommandLineInterface;
 import main.svgparser.CommandProcessor;
-
 
 public interface Command {
 
     //описва поведението на командата която ще имплементира съответният interface
-    CommandResult executeCommand(CommandProcessor commandProcessor);
+    boolean executeCommand(CommandProcessor commandProcessor, CommandLineInterface commandLineInterface);
 }

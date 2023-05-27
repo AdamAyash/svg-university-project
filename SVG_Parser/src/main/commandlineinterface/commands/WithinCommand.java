@@ -1,4 +1,5 @@
 package main.commandlineinterface.commands;
+import main.commandlineinterface.CommandLineInterface;
 import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commandvalidators.BaseCommandValidator;
 import main.commandlineinterface.commandvalidators.CreateCommandValidator;
@@ -22,12 +23,12 @@ public class WithinCommand extends CreateCommand {
     //-----Overrides----
 
     @Override
-    public CommandResult executeCommand( CommandProcessor commandProcessor) {
+    public boolean executeCommand( CommandProcessor commandProcessor, CommandLineInterface commandLineInterface) {
         BaseCommandValidator createCommandValidator = new CreateCommandValidator();
-        CommandResult cResult = createCommandValidator.validate(this);
+        this.setCommandLineInterface(commandLineInterface);
 
-        if(cResult != CommandResult.COMMAND_SUCCESSFUL)
-            return cResult;
+         if(!createCommandValidator.validate(this))
+            return false;
 
         return commandProcessor.checkIfShapeIsWithinAnotherShape(this);
     }

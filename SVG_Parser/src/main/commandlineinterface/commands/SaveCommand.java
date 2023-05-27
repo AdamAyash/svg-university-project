@@ -1,5 +1,6 @@
 package main.commandlineinterface.commands;
 
+import main.commandlineinterface.CommandLineInterface;
 import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commandvalidators.BaseCommandValidator;
@@ -20,13 +21,14 @@ public class SaveCommand extends BaseCommand {
 
     //-----Overrides----
     @Override
-    public CommandResult executeCommand( CommandProcessor commandProcessor) {
+    public boolean executeCommand( CommandProcessor commandProcessor, CommandLineInterface commandLineInterface) {
 
         CommandValidator saveCommandValidator = new BaseCommandValidator();
-        CommandResult cResult = saveCommandValidator.validate(this);
+        this.setCommandLineInterface(commandLineInterface);
 
-        if(cResult != CommandResult.COMMAND_SUCCESSFUL)
-        return cResult;
+        if(!saveCommandValidator.validate(this))
+            return false;
+
 
         return commandProcessor.saveFile();
     }

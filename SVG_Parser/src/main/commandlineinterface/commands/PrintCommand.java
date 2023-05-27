@@ -1,5 +1,6 @@
 package main.commandlineinterface.commands;
 
+import main.commandlineinterface.CommandLineInterface;
 import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commandvalidators.BaseCommandValidator;
@@ -22,12 +23,12 @@ public class PrintCommand extends BaseCommand {
 
     //-----Overrides----
     @Override
-    public CommandResult executeCommand(CommandProcessor commandProcessor) {
+    public boolean executeCommand(CommandProcessor commandProcessor, CommandLineInterface commandLineInterface) {
         CommandValidator printCommandValidator = new BaseCommandValidator();
+        this.setCommandLineInterface(commandLineInterface);
 
-       CommandResult cResult =  printCommandValidator.validate(this);
-       if(cResult != CommandResult.COMMAND_SUCCESSFUL)
-           return cResult;
+      if(!printCommandValidator.validate(this))
+            return false;
 
         return commandProcessor.printAllShapes();
     }

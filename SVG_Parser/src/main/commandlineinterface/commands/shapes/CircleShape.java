@@ -8,15 +8,15 @@ public class CircleShape extends BasicShape {
     //-----Members-----
 
     //x кординатата на центъра на кръга
-    private int centerXCoordinate;
+    private double centerXCoordinate;
     //y кординатата на центъра на кръга
-    private int centerYCoordinate;
+    private double centerYCoordinate;
     //радиус на кръга
-    private int radius;
+    private double radius;
 
     //-----Constructor-----
 
-    public CircleShape(int centerXCoordinate, int centerYCoordinate, int radius) {
+    public CircleShape(double centerXCoordinate, double centerYCoordinate, double radius) {
         this.centerXCoordinate = centerXCoordinate;
         this.centerYCoordinate = centerYCoordinate;
         this.radius = radius;
@@ -24,15 +24,15 @@ public class CircleShape extends BasicShape {
 
     //-----Methods-----
 
-    public int getCenterXCoordinate() {
+    public double getCenterXCoordinate() {
         return centerXCoordinate;
     }
 
-    public int getCenterYCoordinate() {
+    public double getCenterYCoordinate() {
         return centerYCoordinate;
     }
 
-    public int getRadius() {
+    public double getRadius() {
         return radius;
     }
 

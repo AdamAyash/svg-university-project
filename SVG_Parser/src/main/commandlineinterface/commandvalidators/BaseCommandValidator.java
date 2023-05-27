@@ -17,13 +17,12 @@ public class BaseCommandValidator implements CommandValidator{
 
     //-----Overrides----
     @Override
-    public CommandResult validate(Command command) {
-        CommandResult cResult = CommandResult.COMMAND_SUCCESSFUL;
+    public boolean validate(Command command) {
         BaseCommand baseCommand = (BaseCommand)command;
 
         if(!(baseCommand.getCommandParameterCount() == baseCommand.getUserInputCommand().length - 1))
-            cResult = CommandResult.COMMAND_FAILED;
+            return false;
 
-        return cResult;
+        return true;
     }
 }

@@ -29,20 +29,18 @@ public class OpenCommandValidator extends BaseCommandValidator{
     //-----Overrides----
 
     @Override
-    public CommandResult validate(Command command) {
-        CommandResult cResult = super.validate(command);
-
-        if(cResult != CommandResult.COMMAND_SUCCESSFUL)
-            return cResult;
+    public boolean validate(Command command) {
+        if(!super.validate(command))
+            return false;
 
         OpenCommand openCommand = (OpenCommand)command;
 
         String fileExtension  = openCommand.getUserInputCommand()[FILE_EXTENSION_INDEX].split("[.]")[FILE_EXTENSION_INDEX];
 
      if(!(fileExtension.equals(SVG_EXTENSION) || fileExtension.equals(XML_EXTENSION)))
-         cResult = CommandResult.COMMAND_FAILED;
+         return false;
 
-        return cResult;
+        return true;
 
     }
 }

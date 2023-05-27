@@ -14,12 +14,12 @@ public class ExitCommandValidator extends BaseCommandValidator{
 
     //-----Overrides----
     @Override
-    public CommandResult validate(Command command) {
+    public boolean validate(Command command) {
         CommandResult cResult = CommandResult.EXIT_PROGRAM;
 
-        if((super.validate(command)) != CommandResult.COMMAND_SUCCESSFUL)
-            cResult = CommandResult.COMMAND_FAILED;
+        if(!(super.validate(command)))
+            return false;
 
-        return cResult;
+        return true;
     }
 }

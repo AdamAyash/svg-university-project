@@ -1,5 +1,7 @@
 package main.errorlogger;
 
+import main.commandlineinterface.commandresult.CommandResult;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,7 +30,7 @@ public final class ErrorLogger {
 
         }
         catch(IOException e){
-            main.commandlineinterface.PrintWriter.PrintWriter.print("Error logger failed");
+            main.commandlineinterface.PrintWriter.PrintWriter.print(CommandResult.ERROR_LOGGER_FAILED.getCommandResultMessage());
         }
     //-----Overrides----
 

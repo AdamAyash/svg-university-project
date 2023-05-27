@@ -18,6 +18,10 @@ public final class CommandLineInterface {
     //член променлива описваща обект от тип InputManager
     private InputManager inputManager;
 
+
+    //член променлиа описваща дали програмата работи
+    private boolean isRunning;
+
     //член променлива описваща обект от тип CommandFactory, служещ за създаването на съответните команди.
     private CommandFactory commandFactory;
 
@@ -28,6 +32,7 @@ public final class CommandLineInterface {
     public  CommandLineInterface(){
         this.inputManager = new InputManager();
         this.commandFactory = new CommandFactory();
+        isRunning = true;
     }
     //-----Methods-----
     public InputManager getInputManager() {
@@ -35,29 +40,43 @@ public final class CommandLineInterface {
     }
 
     //стартираща фунция на класът
-    public CommandResult run(CommandProcessor commandProcessor) {
+    public void run(CommandProcessor commandProcessor) {
         inputManager.readUserInput();
-        CommandResult cResult;
+        boolean result;
         try {
            Command currentCommand =  commandFactory.createCommand(inputManager.getCommand());
-           cResult = currentCommand.executeCommand(commandProcessor);
+            result = currentCommand.executeCommand(commandProcessor, this);
 
-           if(cResult == CommandResult.COMMAND_SUCCESSFUL){
-               this.currentCommand = currentCommand;
-           }
+            if(!result)
+                PrintWriter.print(CommandResult.COMMAND_FAILED.getCommandResultMessage());
         }
         catch (CommandNotImplementedException | ArrayIndexOutOfBoundsException e){
             ErrorLogger.logError(e.toString());
             PrintWriter.print(e.getMessage());
-            cResult = CommandResult.COMMAND_FAILED;
         }
-
-        return cResult;
     }
 
     public Command getCurrentCommand() {
         return currentCommand;
     }
+
+    public void PrintCommandResult(CommandResult cResult, String additionalInformation){
+        PrintWriter.print(cResult.getCommandResultMessage() + additionalInformation);
+    }
+
+    public void PrintCommandResult(CommandResult cResult){
+        PrintWriter.print(cResult.getCommandResultMessage());
+    }
+
+    public boolean isRunning() {
+        return isRunning;
+    }
+
+    public void setRunning(boolean running) {
+        isRunning = running;
+    }
+
+
 
     //-----Overrides-----
 

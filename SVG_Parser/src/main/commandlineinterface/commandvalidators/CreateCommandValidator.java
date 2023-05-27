@@ -80,21 +80,25 @@ public class CreateCommandValidator extends BaseCommandValidator{
     NumberFormatException, ShapeNotSupportedException{
         switch (currentShape){
             case RECTANGLE:
-                int xCoordinate = Integer.parseInt(command.getUserInputCommand()[2]);
-                int yCoordinate = Integer.parseInt(command.getUserInputCommand()[3]);
-                int width = Integer.parseInt(command.getUserInputCommand()[4]);
-                int height = Integer.parseInt(command.getUserInputCommand()[5]);
+                double xCoordinate = Double.parseDouble(command.getUserInputCommand()[2]);
+                double yCoordinate = Double.parseDouble(command.getUserInputCommand()[3]);
+                double width = Double.parseDouble(command.getUserInputCommand()[4]);
+                double height = Double.parseDouble(command.getUserInputCommand()[5]);
                 return new RectangleShape(xCoordinate, yCoordinate, width, height);
             case CIRCLE:
-                int centerXCoordinate = Integer.parseInt(command.getUserInputCommand()[2]);
-                int centerYCoordinate = Integer.parseInt(command.getUserInputCommand()[3]);
-                int radius = Integer.parseInt(command.getUserInputCommand()[4]);
+                double centerXCoordinate = Double.parseDouble(command.getUserInputCommand()[2]);
+                double centerYCoordinate = Double.parseDouble(command.getUserInputCommand()[3]);
+                double radius = Double.parseDouble(command.getUserInputCommand()[4]);
+
+                if(radius <= 0)
+                    throw new NumberFormatException();
+
                 return new CircleShape(centerXCoordinate, centerYCoordinate, radius);
             case LINE:
-                int firstXCoordinate = Integer.parseInt(command.getUserInputCommand()[2]);
-                int secondXCoordinate = Integer.parseInt(command.getUserInputCommand()[3]);
-                int firstYCoordinate = Integer.parseInt(command.getUserInputCommand()[4]);
-                int secondYCoordinate = Integer.parseInt(command.getUserInputCommand()[5]);
+                double firstXCoordinate = Double.parseDouble(command.getUserInputCommand()[2]);
+                double secondXCoordinate = Double.parseDouble(command.getUserInputCommand()[3]);
+                double firstYCoordinate = Double.parseDouble(command.getUserInputCommand()[4]);
+                double secondYCoordinate = Double.parseDouble(command.getUserInputCommand()[5]);
                 return new LineShape(firstXCoordinate, secondXCoordinate, firstYCoordinate, secondYCoordinate);
 
         }
@@ -103,10 +107,8 @@ public class CreateCommandValidator extends BaseCommandValidator{
 
     //-----Overrides----
     @Override
-    public CommandResult validate(Command command) throws ArrayIndexOutOfBoundsException, NullPointerException,
+    public boolean validate(Command command) throws ArrayIndexOutOfBoundsException, NullPointerException,
             NumberFormatException{
-        CommandResult cResult = CommandResult.COMMAND_FAILED;
-
         try {
             CreateCommand createCommand = (CreateCommand) command;
 
@@ -118,16 +120,15 @@ public class CreateCommandValidator extends BaseCommandValidator{
 
                     if(!createCommand.isColorless())
                     createCommand.getShape().setColor(color.getColor(), createCommand.isColorless());
-
-                    cResult = CommandResult.COMMAND_SUCCESSFUL;
                 }
         }
         catch (ArrayIndexOutOfBoundsException| NullPointerException|
                 NumberFormatException |  ShapeNotSupportedException e){
             ErrorLogger.logError(e.toString());
+            return  false;
         }
 
-        return cResult;
+        return true;
 
     }
 }

@@ -4,32 +4,32 @@ public class RectangleShape extends BasicShape{
     //-----Constants-----
 
     //-----Members-----
-    private int xCoordinate;
-    private int yCoordinate;
-    private int width;
-    private int height;
+    private double xCoordinate;
+    private double yCoordinate;
+    private double width;
+    private double height;
 
     //-----Constructor-----
-    public RectangleShape(int xCoordinate, int yCoordinate, int width, int height) {
+    public RectangleShape(double xCoordinate, double yCoordinate, double width, double height) {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.width = width;
         this.height = height;
     }
     //-----Methods-----
-    public int getXCoordinate() {
+    public double getXCoordinate() {
         return xCoordinate;
     }
 
-    public int getYCoordinate() {
+    public double getYCoordinate() {
         return yCoordinate;
     }
 
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 

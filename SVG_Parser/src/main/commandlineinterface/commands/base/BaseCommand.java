@@ -1,5 +1,6 @@
 package main.commandlineinterface.commands.base;
 
+import main.commandlineinterface.CommandLineInterface;
 import main.svgparser.CommandProcessor;
 
 import java.util.PrimitiveIterator;
@@ -10,6 +11,8 @@ public abstract class BaseCommand implements Command{
 
     //константа описваща командата въведена от потребителя
     private final String[] USER_INPUT_COMMAND;
+
+    private  CommandLineInterface commandLineInterface;
 
     //-----Members-----
 
@@ -29,6 +32,14 @@ public abstract class BaseCommand implements Command{
 
     public int getCommandParameterCount(){
         return commandParameterCount;
+    }
+
+    public CommandLineInterface getCommandLineInterface() {
+        return commandLineInterface;
+    }
+
+    public void setCommandLineInterface(CommandLineInterface commandLineInterface) {
+        this.commandLineInterface = commandLineInterface;
     }
 
     //-----Overrides-----

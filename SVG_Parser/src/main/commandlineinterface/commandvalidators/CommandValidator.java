@@ -5,5 +5,5 @@ import main.commandlineinterface.commands.base.Command;
 
 //оказва основното поведение за валидирането на съответните му имплементации
 public interface CommandValidator {
-    CommandResult validate(Command command);
+    boolean validate(Command command);
 }

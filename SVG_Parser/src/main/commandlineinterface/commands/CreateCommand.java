@@ -1,5 +1,6 @@
 package main.commandlineinterface.commands;
 
+import main.commandlineinterface.CommandLineInterface;
 import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commands.shapes.BasicShape;
@@ -40,13 +41,12 @@ public class CreateCommand extends BaseCommand {
 
     //-----Overrides----
     @Override
-    public CommandResult executeCommand(CommandProcessor commandProcessor) {
+    public boolean executeCommand(CommandProcessor commandProcessor, CommandLineInterface commandLineInterface) {
         BaseCommandValidator createCommandValidator = new CreateCommandValidator();
+        this.setCommandLineInterface(commandLineInterface);
 
-        CommandResult cResult = createCommandValidator.validate(this);
-
-        if(cResult != CommandResult.COMMAND_SUCCESSFUL)
-            return cResult;
+        if(!createCommandValidator.validate(this))
+            return false;
 
         return commandProcessor.createShape(this);
     }

@@ -17,26 +17,21 @@ public class EraseCommandValidator extends BaseCommandValidator{
 
     //-----Overrides----
     @Override
-    public CommandResult validate(Command command) {
-        CommandResult cResult = super.validate(command);
+    public boolean validate(Command command) {
         EraseCommand eraseCommand = (EraseCommand)command;
 
-        if(cResult != CommandResult.COMMAND_SUCCESSFUL) {
-            return cResult;
-        }
+        if(!super.validate(command))
+            return false;
 
         try{
             int eraseIndex = Integer.parseInt(eraseCommand.getUserInputCommand()[1]) - 1;
             eraseCommand.setEraseShapeIndex(eraseIndex);
-
         }
         catch (ArrayIndexOutOfBoundsException | NumberFormatException e){
             ErrorLogger.logError(e.toString());
-            cResult = CommandResult.COMMAND_FAILED;
+            return false;
         }
 
-
-
-        return cResult;
+        return true;
     }
 }

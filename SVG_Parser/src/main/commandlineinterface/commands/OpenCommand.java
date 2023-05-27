@@ -1,5 +1,6 @@
 package main.commandlineinterface.commands;
 
+import main.commandlineinterface.CommandLineInterface;
 import main.commandlineinterface.commandresult.CommandResult;
 import main.commandlineinterface.commands.base.BaseCommand;
 import main.commandlineinterface.commandvalidators.OpenCommandValidator;
@@ -30,15 +31,14 @@ public class OpenCommand extends BaseCommand {
 
     //-----Overrides----
     @Override
-    public CommandResult executeCommand( CommandProcessor commandProcessor) {
+    public boolean executeCommand(CommandProcessor commandProcessor, CommandLineInterface commandLineInterface) {
         OpenCommandValidator openCommandValidator = new OpenCommandValidator();
-        CommandResult cResult = openCommandValidator.validate(this);
+        this.setCommandLineInterface(commandLineInterface);
 
-        if(cResult != CommandResult.COMMAND_SUCCESSFUL)
-            return cResult;
+        if(!openCommandValidator.validate(this))
+            return false;
 
             filePath = getUserInputCommand()[COMMAND_PATH_INDEX];
-
 
         return commandProcessor.openFile(this);
 

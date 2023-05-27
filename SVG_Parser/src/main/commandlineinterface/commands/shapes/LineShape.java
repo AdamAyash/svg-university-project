@@ -7,19 +7,19 @@ public class LineShape extends BasicShape{
     //-----Members-----
 
     //представлява x1
-    private int firstXCoordinate;
+    private double firstXCoordinate;
 
     //представлява x2
-    private int secondXCoordinate;
+    private double secondXCoordinate;
 
     //представлява y1
-    private int firstYCoordinate;
+    private double firstYCoordinate;
 
     //представлява y2
-    private int secondYCoordinate;
+    private double secondYCoordinate;
 
     //-----Constructor-----
-    public LineShape(int firstXCoordinate, int secondXCoordinate, int firstYCoordinate, int secondYCoordinate) {
+    public LineShape(double firstXCoordinate, double secondXCoordinate, double firstYCoordinate, double secondYCoordinate) {
         this.firstXCoordinate = firstXCoordinate;
         this.secondXCoordinate = secondXCoordinate;
         this.firstYCoordinate = firstYCoordinate;
@@ -28,19 +28,19 @@ public class LineShape extends BasicShape{
 
     //-----Methods-----
 
-    public int getFirstXCoordinate() {
+    public double getFirstXCoordinate() {
         return firstXCoordinate;
     }
 
-    public int getSecondXCoordinate() {
+    public double getSecondXCoordinate() {
         return secondXCoordinate;
     }
 
-    public int getFirstYCoordinate() {
+    public double getFirstYCoordinate() {
         return firstYCoordinate;
     }
 
-    public int getSecondYCoordinate() {
+    public double getSecondYCoordinate() {
         return secondYCoordinate;
     }
 

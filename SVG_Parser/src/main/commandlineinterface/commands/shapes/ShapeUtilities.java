@@ -1,15 +1,24 @@
 package main.commandlineinterface.commands.shapes;
 
 public class ShapeUtilities {
-  public static  boolean isRectangleWithinRectangle(int firstRectangleXCoordinate,int firstRectangleYCoordinate, int firstRectangleWidth, int firstRectangleHeight,
-                                                    int secondRectangleXCoordinate,int secondRectangleYCoordinate, int secondRectangleWidth, int secondRectangleHeight) {
+
+    //-----Constants-----
+
+    //-----Members-----
+
+    //-----Constructor-----
+
+    //-----Methods-----
+
+  public static  boolean isRectangleWithinRectangle(double firstRectangleXCoordinate,double firstRectangleYCoordinate, double firstRectangleWidth, double firstRectangleHeight,
+                                                    double secondRectangleXCoordinate,double secondRectangleYCoordinate, double secondRectangleWidth, double secondRectangleHeight) {
 
     return firstRectangleXCoordinate > secondRectangleXCoordinate && (firstRectangleXCoordinate + firstRectangleWidth) < secondRectangleXCoordinate + secondRectangleWidth
             && firstRectangleYCoordinate > secondRectangleYCoordinate && (firstRectangleYCoordinate + firstRectangleHeight) < firstRectangleYCoordinate + secondRectangleHeight;
   }
 
- public static boolean isLineWithinRectangle(int rectangleX1Coordinate, int rectangleY1Coordinate, int rectangleWidth,
-                                            int rectangleHeight, int lineX1Coordinate, int lineX2Coordinate, int lineY1Coordinate,int lineY2Coordinate){
+ public static boolean isLineWithinRectangle(double rectangleX1Coordinate, double rectangleY1Coordinate, double rectangleWidth,
+                                             double rectangleHeight, double lineX1Coordinate, double lineX2Coordinate, double lineY1Coordinate,double lineY2Coordinate){
     return lineX1Coordinate >= rectangleX1Coordinate && lineX1Coordinate <= rectangleX1Coordinate + rectangleWidth &&
             lineX2Coordinate >= rectangleX1Coordinate && lineX2Coordinate <= rectangleX1Coordinate + rectangleWidth &&
             lineY1Coordinate >= rectangleY1Coordinate && lineY1Coordinate <= rectangleY1Coordinate + rectangleHeight &&
@@ -33,5 +42,7 @@ public class ShapeUtilities {
     private static double distance(double x1, double y1, double x2, double y2) {
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
+
+    //-----Overrides----
 
 }

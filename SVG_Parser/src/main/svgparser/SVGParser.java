@@ -22,10 +22,10 @@ public class SVGParser {
 
     //-----Methods-----
     public void start(){
-        CommandResult cResult;
 
-        while((cResult = commandLineInterface.run(commandProcessor)) != CommandResult.EXIT_PROGRAM)
+        while(commandLineInterface.isRunning())
         {
+            commandLineInterface.run(commandProcessor);
         }
         PrintWriter.print(CommandResult.EXIT_PROGRAM.getCommandResultMessage());
     }
