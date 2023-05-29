@@ -11,7 +11,7 @@ public class OpenCommand extends BaseCommand {
     //-----Constants-----
 
     //оказва индекса на пътя на файла
-    private final int COMMAND_PATH_INDEX = 1;
+    protected final int COMMAND_PATH_INDEX = 1;
 
     //-----Members-----
 
@@ -27,6 +27,10 @@ public class OpenCommand extends BaseCommand {
 
     public String getFilePath() {
         return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     //-----Overrides----

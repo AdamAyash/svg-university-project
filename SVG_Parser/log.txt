@@ -332,3 +332,13 @@
 
 [Sat May 27 13:24:06 EEST 2023] main.exceptions.CommandNotImplementedException: "opem" is not recognized as internal or external command.
 
+[Sun May 28 17:53:05 EEST 2023] main.exceptions.CommandNotImplementedException: "saveas" is not recognized as internal or external command.
+
+[Sun May 28 17:54:02 EEST 2023] main.exceptions.CommandNotImplementedException: "saveas" is not recognized as internal or external command.
+
+[Mon May 29 09:42:23 EEST 2023] main.exceptions.CommandNotImplementedException: "" is not recognized as internal or external command.
+
+[Mon May 29 09:49:16 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+
+[Mon May 29 09:53:02 EEST 2023] java.lang.NullPointerException: Cannot invoke "main.commandlineinterface.commands.shapes.supportedshapes.SupportedShapes.getParametersCount()" because "currentShape" is null
+

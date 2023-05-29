@@ -13,8 +13,8 @@ public class ShapeUtilities {
   public static  boolean isRectangleWithinRectangle(double firstRectangleXCoordinate,double firstRectangleYCoordinate, double firstRectangleWidth, double firstRectangleHeight,
                                                     double secondRectangleXCoordinate,double secondRectangleYCoordinate, double secondRectangleWidth, double secondRectangleHeight) {
 
-    return firstRectangleXCoordinate > secondRectangleXCoordinate && (firstRectangleXCoordinate + firstRectangleWidth) < secondRectangleXCoordinate + secondRectangleWidth
-            && firstRectangleYCoordinate > secondRectangleYCoordinate && (firstRectangleYCoordinate + firstRectangleHeight) < firstRectangleYCoordinate + secondRectangleHeight;
+    return firstRectangleXCoordinate >= secondRectangleXCoordinate && (firstRectangleXCoordinate + firstRectangleWidth) <= secondRectangleXCoordinate + secondRectangleWidth
+            && firstRectangleYCoordinate >= secondRectangleYCoordinate && (firstRectangleYCoordinate + firstRectangleHeight) <= firstRectangleYCoordinate + secondRectangleHeight;
   }
 
  public static boolean isLineWithinRectangle(double rectangleX1Coordinate, double rectangleY1Coordinate, double rectangleWidth,

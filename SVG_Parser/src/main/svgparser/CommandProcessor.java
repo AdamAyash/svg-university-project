@@ -35,7 +35,7 @@ public class CommandProcessor {
 
     private final String CIRCLE_X_COORDINATE = "cx";
     private final String CIRCLE_Y_COORDINATE = "cy";
-    private final String CIRCLE_RADIUS = "radius";
+    private final String CIRCLE_RADIUS = "r";
 
     private final String LINE_FIRST_X_COORDINATE = "x1";
     private final String LINE_SECOND_X_COORDINATE = "x2";
@@ -437,6 +437,52 @@ public class CommandProcessor {
         return true;
 
     }
+
+    public void help() {
+        if(!isFileOpened) {
+            PrintWriter.print(CommandResult.FILE_NOT_OPENED.getCommandResultMessage());
+            return;
+        }
+       PrintWriter.print("The following commands are supported");
+        PrintWriter.print("open <file> opens <file>");
+        PrintWriter.print("close closes currently opened file");
+        PrintWriter.print("save saves the currently open file");
+        PrintWriter.print("saveas <file> saves the currently open file in <file>");
+        PrintWriter.print("print print all supported shapes");
+        PrintWriter.print("create creates a new shape");
+        PrintWriter.print("erase <n>  Erases shape with index <n>");
+        PrintWriter.print("translate [<n>] translates shape with index <n> of if <n> is not assigned, translates all shapes");
+        PrintWriter.print("within <option> prints all shapes which are contained within another shape described by option");
+        PrintWriter.print("help prints this information ");
+        PrintWriter.print("exit exists the program");
+    }
+
+    public boolean saveFile(String filePath) {
+        if(!isFileOpened) {
+            PrintWriter.print(CommandResult.FILE_NOT_OPENED.getCommandResultMessage());
+            return false;
+        }
+        try {
+            DOMSource source = new DOMSource(currentDocument);
+
+            Result streamResult = new StreamResult(new File(filePath));
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, "yes");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.transform(source, streamResult);
+        }
+        catch (TransformerException | NullPointerException e){
+            ErrorLogger.logError(e.toString());
+            return false;
+        }
+        PrintWriter.print(CommandResult.FILE_SAVED_SUCCESSFULLY.getCommandResultMessage() + currentFile.getName());
+        closeCurrentFile();
+
+        return true;
+
+    }
+
 
     //затваря текущия файл, без да запазва промените по него
     public boolean closeCurrentFile(){

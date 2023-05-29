@@ -43,8 +43,14 @@ public class CommandFactory {
         if(currentCommandKeyword.equals(SupportedCommands.TRANSLATE.getCommand()))
                 return new TranslateCommand(command, SupportedCommands.TRANSLATE.getCommandParameterCount());
 
+        if(currentCommandKeyword.equals(SupportedCommands.SAVE_AS.getCommand()))
+            return new SaveAsCommand(command, SupportedCommands.SAVE_AS.getCommandParameterCount());
+
         if(currentCommandKeyword.equals(SupportedCommands.WITHIN.getCommand()))
             return new WithinCommand(command, SupportedCommands.WITHIN.getCommandParameterCount());
+
+        if(currentCommandKeyword.equals(SupportedCommands.HELP.getCommand()))
+            return new HelpCommand(command, SupportedCommands.HELP.getCommandParameterCount());
 
 
         throw new CommandNotImplementedException("\"" + currentCommandKeyword + "\"" + COMMAND_NOT_SUPPORTED_MESSAGE);

@@ -1,5 +1,4 @@
 package main.commandlineinterface;
-
 import main.commandlineinterface.PrintWriter.PrintWriter;
 import main.commandlineinterface.commandfactory.CommandFactory;
 import main.commandlineinterface.commandresult.CommandResult;

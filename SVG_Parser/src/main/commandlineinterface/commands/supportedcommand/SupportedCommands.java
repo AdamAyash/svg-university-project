@@ -13,7 +13,7 @@ public enum SupportedCommands {
     TRANSLATE("translate", 3),
     WITHIN("within", 0),
     CREATE("create", 0),
-    SAVE_AS("saveas ", 1),
+    SAVE_AS("saveas", 1),
     HELP("help", 0);
 
     //описва ключовата дума на командата
