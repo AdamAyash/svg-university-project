@@ -1,7 +1,6 @@
 package main.commandlineinterface.commands.shapes;
 
 public class ShapeUtilities {
-
     //-----Constants-----
 
     //-----Members-----
@@ -9,7 +8,6 @@ public class ShapeUtilities {
     //-----Constructor-----
 
     //-----Methods-----
-
   public static  boolean isRectangleWithinRectangle(double firstRectangleXCoordinate,double firstRectangleYCoordinate, double firstRectangleWidth, double firstRectangleHeight,
                                                     double secondRectangleXCoordinate,double secondRectangleYCoordinate, double secondRectangleWidth, double secondRectangleHeight) {
 
@@ -44,5 +42,4 @@ public class ShapeUtilities {
     }
 
     //-----Overrides----
-
 }

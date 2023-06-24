@@ -97,7 +97,6 @@ public class CommandProcessor {
         return true;
     }
 
-
     public boolean checkIfShapeIsWithinAnotherShape(final Command command){
         if(!isFileOpened) {
             PrintWriter.print(CommandResult.FILE_NOT_OPENED.getCommandResultMessage());
@@ -439,10 +438,6 @@ public class CommandProcessor {
     }
 
     public void help() {
-        if(!isFileOpened) {
-            PrintWriter.print(CommandResult.FILE_NOT_OPENED.getCommandResultMessage());
-            return;
-        }
        PrintWriter.print("The following commands are supported");
         PrintWriter.print("open <file> opens <file>");
         PrintWriter.print("close closes currently opened file");
